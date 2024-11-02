@@ -1,11 +1,19 @@
 <script setup lang="ts">
-const test = () => {
-  return 'ebaniy eslint config'
-}
+
 </script>
 
 <template>
-  <div>
-    test
-  </div>
+  <NuxtLayout>
+    <template #header>
+      <Header />
+    </template>
+
+    <template #main>
+      <Catalog />
+    </template>
+
+    <template #footer>
+      <Footer />
+    </template>
+  </NuxtLayout>
 </template>
