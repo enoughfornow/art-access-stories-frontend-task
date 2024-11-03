@@ -1,5 +1,6 @@
 <script setup lang="ts">
-
+const route = useRoute()
+const { id, name } = route.params
 </script>
 
 <template>
@@ -9,7 +10,10 @@
     </template>
 
     <template #main>
-      <Categories />
+      <Categories
+        :id="+id"
+        :name="name"
+      />
     </template>
 
     <template #footer>

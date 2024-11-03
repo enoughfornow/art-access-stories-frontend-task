@@ -1,4 +1,4 @@
-export interface Locale {
+export interface ILocale {
   id: number
   cg_name: string
   cg_description: string
@@ -9,7 +9,13 @@ export interface Locale {
   link: string
 }
 
-export interface Category {
+export enum ELanguage {
+  ru = 'ru',
+  en = 'en',
+  fr = 'fr',
+}
+
+export interface ICategory {
   id: number
   depth: number
   numchild: number
@@ -24,12 +30,11 @@ export interface Category {
   og: null
   twitter: null
   locale: {
-    en?: Locale
-    ru?: Locale
-    fr?: Locale
+    en?: ILocale
+    ru?: ILocale
+    fr?: ILocale
   }
   search_target: boolean
   path_to_top: number[]
-  childs: Category[]
+  childs: ICategory[]
 }
-// надо подумать куда вынести файл с типами

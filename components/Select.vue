@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import type { Category } from '../types/types'
+import { ELanguage } from '../types/types'
 
-const { data } = await useFetch<Category[]>('/api/data')
+// const selectedLang = ref<ELanguage>(ELanguage.ru)
+const store = useLocaleStore()
+
+function handleSelect(event: Event) {
+  const lang = (event.target as HTMLSelectElement).value as ELanguage
+  store.selectLocale(lang)
+}
 </script>
 
 <template>
-  <div
-    v-for="item in data"
-    :key="item.id"
-  >
-    {{ item.locale.en }}
-  </div>
+  <select @change="handleSelect">
+    <option
+      v-for="lang in ELanguage"
+      :key="lang"
+    >
+      {{ lang }}
+    </option>
+  </select>
 </template>
