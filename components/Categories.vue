@@ -22,10 +22,12 @@ const data = computed(() => {
 
 <template>
   <div
-    class="m-5 flex flex-row"
+    v-for="item in data"
+    :key="item.id"
+    class="m-5 flex flex-wrap"
   >
-    <CatalogItem
-      :item="data"
+    <CategoryItem
+      :item="item"
     />
   </div>
 </template>
