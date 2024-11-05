@@ -11,7 +11,6 @@ const props = withDefaults(defineProps<IProps>(), {
 const classes = computed(() => ({
   image: ['object-cover'],
 }))
-// { 'el-w-max-content': props.size === 'md' },
 </script>
 
 <template>
