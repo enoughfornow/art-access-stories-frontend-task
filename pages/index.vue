@@ -11,9 +11,5 @@
     <template #main>
       <Categories />
     </template>
-
-    <template #footer>
-      <Footer />
-    </template>
   </NuxtLayout>
 </template>

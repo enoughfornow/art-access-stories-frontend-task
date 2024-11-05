@@ -1,17 +1,29 @@
 <script setup lang="ts">
 import { ELanguage } from '../types/types'
 
-// const selectedLang = ref<ELanguage>(ELanguage.ru)
 const store = useLocaleStore()
+const categoriesStore = useCategoriesStore()
+
+const categories = computed(() => categoriesStore.categories)
 
 function handleSelect(event: Event) {
   const lang = (event.target as HTMLSelectElement).value as ELanguage
-  store.selectLocale(lang)
+
+  const filteredCategories = categories.value.filter((category) => {
+    return category.locale[lang]?.cg_name
+  })
+
+  if (filteredCategories.length === 0) {
+    store.selectLocale(ELanguage.ru)
+  }
+  else {
+    store.selectLocale(lang)
+  }
 }
 </script>
 
 <template>
-  <select @change="handleSelect">
+  <select @change="handleSelect($event)">
     <option
       v-for="lang in ELanguage"
       :key="lang"

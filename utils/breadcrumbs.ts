@@ -7,7 +7,7 @@ export function breadcrumbs(item: ICategory, categories: ICategory[], selectedLo
 }
 
 function getPath(item: ICategory) {
-  return Array.isArray(item.path_to_top) ? [...item.path_to_top, item.id] : [item.id]
+  return Array.isArray(item.path_to_top) ? [item.id, ...item.path_to_top].reverse() : [item.id]
 }
 
 function findCategory(id: number, categories: ICategory[]): ICategory | null {
@@ -28,6 +28,7 @@ function findCategory(id: number, categories: ICategory[]): ICategory | null {
 function getPathNames(path: number[], categories: ICategory[], selectedLocale: ELanguage) {
   return path.map((id) => {
     const category = findCategory(id, categories)
-    return category ? category.locale[selectedLocale]?.cg_name : ''
+    const words = category?.locale[selectedLocale]?.cg_name.split(' ')
+    return category ? words?.join(' ') : ''
   }).filter(Boolean)
 }

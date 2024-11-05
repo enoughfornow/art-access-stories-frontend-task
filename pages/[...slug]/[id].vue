@@ -12,12 +12,7 @@ const { id, name } = route.params
     <template #main>
       <Categories
         :id="+id"
-        :name="name"
       />
-    </template>
-
-    <template #footer>
-      <Footer />
     </template>
   </NuxtLayout>
 </template>

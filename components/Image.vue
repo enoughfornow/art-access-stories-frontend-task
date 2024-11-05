@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<IProps>(), {
   alt: 'image',
 })
 const classes = computed(() => ({
-  image: ['object-cover h-full'],
+  image: ['object-cover'],
 }))
 // { 'el-w-max-content': props.size === 'md' },
 </script>
@@ -21,9 +21,3 @@ const classes = computed(() => ({
     :alt="props.alt"
   >
 </template>
-
-<!-- <style scoped>
-.default {
-    background-image: url('/no-image.png');
-}
-</style> -->
