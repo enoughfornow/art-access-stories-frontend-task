@@ -10,6 +10,10 @@ const props = defineProps<IProps>()
 
 const categoriesStore = useCategoriesStore()
 
+const localeStore = useLocaleStore()
+
+const selectedLocale = computed(() => localeStore.selectedLocale)
+
 categoriesStore.getCategories()
 
 const data = computed(() => {
@@ -21,12 +25,25 @@ const data = computed(() => {
 </script>
 
 <template>
+  <div class="flex gap-5 flex-wrap justify-center mb-5">
+    <template
+      v-for="item in data" :key="item.id"
+    >
+      <nav
+        class="cursor-pointer"
+        @click="navigateTo(`/${item.locale[selectedLocale]?.link}${item.id}`)"
+      >
+        {{ `${item.locale[selectedLocale]?.cg_name} / ` }}
+      </nav>
+    </template>
+  </div>
   <div
     v-for="item in data"
     :key="item.id"
-    class="m-5 flex flex-wrap"
+    class="inline-flex"
   >
     <CategoryItem
+      v-if="item.childs"
       :item="item"
     />
   </div>

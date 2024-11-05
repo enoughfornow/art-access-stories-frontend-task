@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const classes = {
-  root: 'flex flex-col min-h-[100vh]',
-  header: 'bg-gray-100',
-  main: 'flex flex-col flex-wrap items-center ',
-  footer: 'bg-gray-100 mt-auto',
+  root: 'grid grid-cols-12 grid-rows-6 min-h-[100vh]',
+  header: 'bg-gray-100 col-start-1 col-end-13 h-[10vh] mb-auto',
+  main: 'col-start-2 col-end-13 row-start-2 row-end-6',
+  footer: 'bg-gray-100 col-start-1 col-end-13 mt-auto',
 }
 </script>
 
